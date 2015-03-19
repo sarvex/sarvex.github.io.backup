@@ -7,19 +7,6 @@
     <link rel="stylesheet" type="text/css" href="assets/grid.css">
     <link rel="stylesheet" type="text/css" href="assets/style.css">
     <link href="//abs.twimg.com/favicons/favicon.ico" rel="shortcut icon" type="image/x-icon">
-    <script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-39101739-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-    </script>
     <script type="text/javascript" src="assets/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="assets/strftime.js"></script>
     <script type="text/javascript">
@@ -27,7 +14,7 @@
 
       // Put custom repo URL's in this object, keyed by repo name.
       var repoUrls = {
-        "bootstrap": "http://sarvex.github.com/bootstrap/",
+        "Aircel": "http://sarvex.github.com/Aircel/",
       };
 
       function repoUrl(repo) {
@@ -36,8 +23,7 @@
 
       // Put custom repo descriptions in this object, keyed by repo name.
       var repoDescriptions = {
-        "bootstrap": "An HTML, CSS, and JS toolkit designed to kickstart development of webapps and sites",
-        "naggati2": "A protocol builder for Netty using Scala 2.8"
+        "Aircel": "A Qt based Dialer for USB dongles written in C++",
       };
 
       function repoDescription(repo) {
@@ -79,7 +65,7 @@
         repos = repos || [];
         page = page || 1;
 
-        var uri = "https://api.github.com/orgs/sarvex/repos?callback=?"
+        var uri = "https://api.github.com/sarvex/repos?callback=?"
                 + "&per_page=100"
                 + "&page="+page;
 
@@ -134,27 +120,6 @@
         });
       }
       addRepos();
-
-      //get total number of sarvex members
-      function getNumMembers(page, numMembers) {
-        var page = page || 1;
-        var numMembers = numMembers || 0;
-        var membersUri = "https://api.github.com/orgs/sarvex/members?callback=?"
-          + "&per_page=100"
-          + "&page="+page;
-
-        $.getJSON(membersUri, function (result) {
-          if (result.data && result.data.length > 0) {
-            numMembers += result.data.length;
-            getNumMembers(page+1, numMembers);
-          } else {
-            $(function () {
-              $("#num-members").text(numMembers);
-            });
-          }
-        });
-      }
-      getNumMembers();
 
       function randomItem(array) {
         return array[Math.floor(Math.random() * array.length)];
@@ -251,8 +216,6 @@
           <h1>Statistics</h1>
           <p>
             <a href="https://github.com/sarvex/repositories"><span id="num-repos"><img src="assets/spinner.gif" /></span> public repos</a>
-            <br>
-            <a href="https://github.com/sarvex?tab=members"><span id="num-members"><img src="assets/spinner.gif" /></span> members</a>
           </p>
           <p class="email"><a href="mailto:sarvex.jatasra@gmail.com">sarvex.jatasra@gmail.com</a></p>
         </div>
