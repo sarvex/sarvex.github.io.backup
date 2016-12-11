@@ -1,30 +1,46 @@
-/**
- * Reset some basic elements
- */
-body, h1, h2, h3, h4, h5, h6,
-p, blockquote, pre, hr,
-dl, dd, ol, ul, figure {
-    margin: 0;
-    padding: 0;
-}
 
+*{
+    -webkit-transition: all 0.2s; /* Safari */
+    -webkit-transition-timing-function: linear; /* Safari */
+    transition: all 0.2s;
+    transition-timing-function: linear;
+      }
 
-
-/**
- * Basic styling
- */
 body {
-    font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
-    color: $text-color;
-    background-color: $background-color;
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-feature-settings: "kern" 1;
-    -moz-font-feature-settings: "kern" 1;
-    -o-font-feature-settings: "kern" 1;
-    font-feature-settings: "kern" 1;
-    font-kerning: normal;
+         background: #fff;
+         font-family: $base-font-family;
+         font-size: 15px;
+         font-weight: 300;
+         overflow-x: hidden;
+         color: $text-color;
+         line-height: 1.6;
+         @include media-query($on-palm) {
+          padding: 10px;        
+    }
+         
 }
 
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    height: 5px;
+    width: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: $text-color;
+}
+::-webkit-scrollbar-track {
+    background-color: #EEE;
+}
+
+
+a {
+    color: $brand-color;
+    text-decoration: none;
+    &:hover {
+        color: $highlight-color;
+    }
+}
 
 
 /**
@@ -36,6 +52,53 @@ ul, ol, dl, figure,
 %vertical-rhythm {
     margin-bottom: $spacing-unit / 2;
 }
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: $head-font-family;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.8;
+}
+
+
+/**
+ * Headings
+ */
+h1{
+    font-size: 2.2em;
+    @include media-query($on-laptop) {
+        font-size: 2em;
+    }
+}
+h2{
+    font-size: 1.6em;
+    @include media-query($on-laptop) {
+        font-size: 1.2em;
+    }
+}
+
+h3{
+    font-size: 1.2em;
+    @include media-query($on-laptop) {
+        font-size: 0.9em;
+    }
+}
+
+h4 {
+        font-size: 1em;
+    @include media-query($on-laptop) {
+        font-size: 0.8em;
+    }
+}
+
+h5{
+        font-size: 0.9em;
+    @include media-query($on-laptop) {
+        font-size: 0.7em;
+    }
+    
+}
+
 
 
 
@@ -50,57 +113,22 @@ img {
 
 
 /**
- * Figures
- */
-figure > img {
-    display: block;
-}
-
-figcaption {
-    font-size: $small-font-size;
-}
-
-
-
-/**
  * Lists
  */
 ul, ol {
     margin-left: $spacing-unit;
+     @include media-query($on-palm) {
+                font-size: 12px;
+                }
 }
 
 li {
     > ul,
     > ol {
          margin-bottom: 0;
-    }
-}
-
-
-
-/**
- * Headings
- */
-h1, h2, h3, h4, h5, h6 {
-    font-weight: $base-font-weight;
-}
-
-
-
-/**
- * Links
- */
-a {
-    color: $brand-color;
-    text-decoration: none;
-
-    &:visited {
-        color: darken($brand-color, 15%);
-    }
-
-    &:hover {
-        color: $text-color;
-        text-decoration: underline;
+            @include media-query($on-palm) {
+                font-size: 12px;
+                }
     }
 }
 
@@ -110,13 +138,13 @@ a {
  * Blockquotes
  */
 blockquote {
-    color: $grey-color;
-    border-left: 4px solid $grey-color-light;
+    color: $brand-color;
+    border-left: 4px solid $brand-color;
     padding-left: $spacing-unit / 2;
     font-size: 18px;
     letter-spacing: -1px;
     font-style: italic;
-
+    font-family: monospace;
     > :last-child {
         margin-bottom: 0;
     }
@@ -130,18 +158,18 @@ blockquote {
 pre,
 code {
     font-size: 15px;
-    border: 1px solid $grey-color-light;
     border-radius: 3px;
-    background-color: #eef;
 }
 
 code {
     padding: 1px 5px;
+    border: 1px solid $brand-color;
 }
 
 pre {
     padding: 8px 12px;
     overflow-x: auto;
+    border: 1px solid $brand-color;
 
     > code {
         border: 0;
@@ -149,29 +177,6 @@ pre {
         padding-left: 0;
     }
 }
-
-
-
-/**
- * Wrapper
- */
-.wrapper {
-    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
-    max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
-    margin-right: auto;
-    margin-left: auto;
-    padding-right: $spacing-unit;
-    padding-left: $spacing-unit;
-    @extend %clearfix;
-
-    @include media-query($on-laptop) {
-        max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
-        max-width:         calc(#{$content-width} - (#{$spacing-unit}));
-        padding-right: $spacing-unit / 2;
-        padding-left: $spacing-unit / 2;
-    }
-}
-
 
 
 /**
